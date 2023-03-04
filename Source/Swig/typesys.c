@@ -1697,16 +1697,6 @@ void SwigType_remember_clientdata(const SwigType *t, const_String_or_char_ptr cl
   /*Printf(stdout,"t = '%s'\n", t);
      Printf(stdout,"fr= '%s'\n\n", fr); */
 
-  if (t) {
-    char *ct = Char(t);
-    const char *lt = strchr(ct, '<');
-    /* Allow for `<<` operator in constant expression for array size. */
-    if (lt && lt[1] != '(' && lt[1] != '<') {
-      Printf(stdout, "Bad template type passed to SwigType_remember: %s\n", t);
-      assert(0);
-    }
-  }
-
   h = Getattr(r_mangled, mt);
   if (!h) {
     h = NewHash();
